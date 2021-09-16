@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from places.models import Place, Image
+from django.urls import reverse
+from places.views import get_place
 
 def index(request):
     places = Place.objects.all()
@@ -20,7 +22,7 @@ def index(request):
                 {
                     'title': place.title,
                     'placeId': place.id,
-                    'detailsUrl': '#'
+                    'detailsUrl': reverse(get_place, args=[place.id])
                 }
 
             }

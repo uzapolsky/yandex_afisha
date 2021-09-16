@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http.response import JsonResponse
 from .models import Place, Image
 
-def place(request, place_id):
+def get_place(request, place_id):
     place = get_object_or_404(Place, id=place_id)
     images = place.images.all().order_by('position')
     response = {
