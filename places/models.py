@@ -26,7 +26,7 @@ class Place(models.Model):
 
 
 class Image(models.Model):
-    position = models.PositiveSmallIntegerField()
+    position = models.PositiveSmallIntegerField(default=0)
     place = models.ForeignKey(
         Place,
         related_name='images',
@@ -36,3 +36,6 @@ class Image(models.Model):
 
     def __str__(self):
         return '{0} - {1}'.format(self.place.title, self.position)
+
+    class Meta:
+        ordering = ['position']
