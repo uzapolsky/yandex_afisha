@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.deletion import CASCADE
 
 
 class Place(models.Model):
@@ -22,3 +23,16 @@ class Place(models.Model):
 
     def __str__(self):
         return '{0}'.format(self.title)
+
+
+class Image(models.Model):
+    position = models.PositiveSmallIntegerField()
+    place = models.ForeignKey(
+        Place,
+        related_name='images',
+        on_delete=models.CASCADE,
+    )
+    img = models.ImageField()
+
+    def __str__(self):
+        return '{0} - {1}'.format(self.place.title, self.position)
