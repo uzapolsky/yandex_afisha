@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'where_to_go'
+    'where_to_go',
+    'places.apps.PlacesConfig',
 ]
 
 MIDDLEWARE = [
