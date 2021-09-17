@@ -26,13 +26,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG', False)
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -47,6 +46,7 @@ INSTALLED_APPS = [
     'where_to_go',
     'places.apps.PlacesConfig',
     'adminsortable2',
+    'tinymce',
 ]
 
 MIDDLEWARE = [
@@ -143,3 +143,16 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+SECURE_HSTS_SECONDS = os.getenv('SECURE_HSTS_SECONDS', False)
+SECURE_HSTS_INCLUDE_SUBDOMAINS = os.getenv('SECURE_HSTS_INCLUDE_SUBDOMAINS', False)
+SECURE_HSTS_PRELOAD = os.getenv('SECURE_HSTS_PRELOAD', False)
+SECURE_SSL_REDIRECT = os.getenv('SECURE_SSL_REDIRECT', False)
+CORS_REPLACE_HTTPS_REFERER = os.getenv('CORS_REPLACE_HTTPS_REFERER', False)
+SECURE_PROXY_SSL_HEADER = os.getenv('SECURE_PROXY_SSL_HEADER', None)
+SESSION_COOKIE_SECURE = os.getenv('SESSION_COOKIE_SECURE', False)
+CSRF_COOKIE_SECURE = os.getenv('CSRF_COOKIE_SECURE', False)
+SECURE_HSTS_SECONDS = os.getenv('SECURE_HSTS_SECONDS', None)
+SECURE_HSTS_INCLUDE_SUBDOMAINS = os.getenv('SECURE_HSTS_INCLUDE_SUBDOMAINS', False)
+SECURE_FRAME_DENY = os.getenv('SECURE_FRAME_DENY', False)

@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models.deletion import CASCADE
+from tinymce.models import HTMLField
 
 
 class Place(models.Model):
@@ -7,7 +8,7 @@ class Place(models.Model):
         max_length=200,
     )
     description_short = models.TextField()
-    description_long = models.TextField(
+    description_long = HTMLField(
         blank=True,
     )
     coordinate_lng = models.DecimalField(
