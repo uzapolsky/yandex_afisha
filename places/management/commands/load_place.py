@@ -3,6 +3,7 @@ import uuid
 from django.core.files.base import ContentFile
 from django.core.management.base import BaseCommand
 from places.models import Image, Place
+from os.path import splitext
 
 
 class Command(BaseCommand):
@@ -29,8 +30,9 @@ class Command(BaseCommand):
                 place=place,
                 position=position,
             )
+            _, img_ext = splitext(img_link)
             img = requests.get(img_link)
             response.raise_for_status()
             f = ContentFile(img.content)
-            img_name = str(uuid.uuid4())
+            img_name = '{0}{1}'.format(str(uuid.uuid4()), img_ext)
             image.img.save(img_name, f, save=True)
