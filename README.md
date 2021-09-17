@@ -1,6 +1,6 @@
 # Куда пойти. Москва глазами любителя активного отдыха
 
-Cайт https://uzapolsky.pythonanywhere.com/ о самых интересных местах в Москве.
+Cайт [uzapolsky.pythonanywhere.com](https://uzapolsky.pythonanywhere.com/) о самых интересных местах в Москве.
 
 ## Запуск
 
@@ -28,6 +28,7 @@ Cайт https://uzapolsky.pythonanywhere.com/ о самых интересных
 Часть настроек проекта берётся из переменных окружения. Чтобы их определить, создайте файл `.env` рядом с `manage.py` и запишите туда данные в таком формате: `ПЕРЕМЕННАЯ=значение`.
 
 Доступны переменные:
+
 - `DEBUG` — дебаг-режим. Поставьте True, чтобы увидеть отладочную информацию в случае ошибки.
 - `SECRET_KEY` — секретный ключ проекта
 - `ALLOWED_HOSTS` — см [документацию Django](https://docs.djangoproject.com/en/3.1/ref/settings/#allowed-hosts).
