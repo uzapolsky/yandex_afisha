@@ -7,10 +7,10 @@ class ImageInline(SortableInlineAdminMixin, admin.TabularInline):
     readonly_fields = ['image_preview']
 
     def image_preview(self, place):
-        return format_html("<img src='{url}' width=200 max-height=200 />".format(
+        return format_html(
+            "<img src='{url}' style='width:200px; max-height:200px' />",
             url = place.img.url
         )
-    )
     model = Image
 
 class PlaceAdmin(admin.ModelAdmin):
