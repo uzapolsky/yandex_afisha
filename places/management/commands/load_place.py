@@ -15,19 +15,19 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         response = requests.get(options['json-description'])
         response.raise_for_status()
-        place_desc = response.json()
+        raw_place = response.json()
 
         place, created = Place.objects.update_or_create(
-            title=place_desc['title'],
+            title=raw_place['title'],
             defaults={
-                'description_short': place_desc['description_short'],
-                'description_long': place_desc['description_long'],
-                'coordinate_lng': place_desc['coordinates']['lng'],
-                'coordinate_lat': place_desc['coordinates']['lat'],
+                'description_short': raw_place['description_short'],
+                'description_long': raw_place['description_long'],
+                'coordinate_lng': raw_place['coordinates']['lng'],
+                'coordinate_lat': raw_place['coordinates']['lat'],
             }
         )
 
-        for position, img_link in enumerate(place_desc['imgs']):
+        for position, img_link in enumerate(raw_place['imgs']):
             image, created = Image.objects.get_or_create(
                 place=place,
                 position=position,
